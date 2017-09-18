@@ -14,15 +14,24 @@ func TestRomans(t *testing.T) {
 }
 
 var _ = Describe("Roman numbers", func() {
-	Context("Test of the first 3 numbers", func() {
-		It("1 to roman", func() {
+	Context("Test of the first 6 numbers", func() {
+		It("convert 1 to roman", func() {
 			Expect(Convert(1)).Should(BeEquivalentTo("I"))
 		})
-		It("2 to roman", func() {
+		It("convert 2 to roman", func() {
 			Expect(Convert(2)).Should(BeEquivalentTo("II"))
 		})
-		It("3 to roman", func() {
+		It("convert 3 to roman", func() {
 			Expect(Convert(3)).Should(BeEquivalentTo("III"))
+		})
+		It("convert 4 to roman", func() {
+			Expect(Convert(4)).Should(BeEquivalentTo("IV"))
+		})
+		It("convert 5 to roman", func() {
+			Expect(Convert(5)).Should(BeEquivalentTo("V"))
+		})
+		It("convert 6 to roman", func() {
+			Expect(Convert(6)).Should(BeEquivalentTo("VI"))
 		})
 	})
 })
