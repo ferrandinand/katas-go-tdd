@@ -25,7 +25,7 @@ func Convert(number int) (romanresult string) {
 	}
 
 	for _, numbersmap := range romanEquivalences {
-		numberofsymbols, decimalremainder := remaninder(number, numbersmap.arabic)
+		decimalremainder,numberofsymbols := remaninder(number, numbersmap.arabic)
 		number = decimalremainder
 		romanresult += strings.Repeat(numbersmap.roman, numberofsymbols)
 	}
