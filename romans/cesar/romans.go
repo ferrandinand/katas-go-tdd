@@ -12,39 +12,23 @@ func remaninder(number, divisor int) (restremainder, restquotion int) {
 
 	return
 }
-
-//Convert arabic numbers to roman
-func Convert(number int) string {
-	var romanresult string
+func Convert(number int) (romanresult string) {
+	//var romanresult string
 
 	var romanEquivalences = []struct {
 		arabic int    // input
 		roman  string // expected result
 	}{
-		{arabic: 1, roman: "I"},
-		{arabic: 4, roman: "IV"},
 		{arabic: 5, roman: "V"},
-		{arabic: 6, roman: "VI"},
+		{arabic: 4, roman: "IV"},
+		{arabic: 1, roman: "I"},
 	}
 
 	for _, numbersmap := range romanEquivalences {
-		if number < 4 && number > 0 {
-			romanresult = strings.Repeat(numbersmap.roman, number)
-		}
-		if number == 4 {
-			romanresult = "IV"
-
-		}
-		if number == 5 {
-			romanresult = "V"
-
-		}
-		if number == 6 {
-			romanresult = "VI"
-
-		}
-
+		numberofsymbols, decimalremainder := remaninder(number, numbersmap.arabic)
+		number = decimalremainder
+		romanresult += strings.Repeat(numbersmap.roman, numberofsymbols)
 	}
 
-	return romanresult
+	return
 }
