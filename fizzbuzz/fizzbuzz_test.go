@@ -1,7 +1,6 @@
 package main
 
 import "testing"
-
 import . "github.com/onsi/ginkgo"
 import . "github.com/onsi/gomega"
 
@@ -12,11 +11,13 @@ func TestFizzBuzz(t *testing.T) {
 
 var _ = Describe("FizzBuzz", func() {
 	var (
-		Array []int
+		Array            []int
+		transformedArray []string
 	)
 
 	BeforeEach(func() {
-		Array := fill(100)
+		Array = fill(100)
+		transformedArray = transformFizzOrBuzz(Array)
 	})
 
 	Context("Create list of 100", func() {
@@ -24,48 +25,14 @@ var _ = Describe("FizzBuzz", func() {
 			Expect(len(Array)).Should(BeEquivalentTo(100))
 		})
 	})
-
+	Context("Numbers divisible by 3 show Fizz", func() {
+		It("3 must return Fizz", func() {
+			Expect(divisibleby3(3)).To(Equal("Fizz"))
+		})
+	})
+	Context("Check expected values", func() {
+		It("3 must return Fizz", func() {
+			Expect(len(transformedArray)).Should(BeEquivalentTo(100))
+		})
+	})
 })
-
-// type name struct {
-// 	X string
-// }
-
-// func fill(n int) []int {
-// 	var maxnumber []int
-
-// 	for i := 1; i <= n; i++ {
-// 		maxnumber[i] = i
-// 		fmt.Println("THis is %v", maxnumber[i])
-// 	}
-// 	return maxnumber
-// }
-
-// func TestFizzBuzz(t *testing.T) {
-// 	cases := []struct {
-// 		in, want string
-// 	}{
-// 		{"1", "1"},
-// 		{"2", "2"},
-// 		{"3", "fizz"},
-// 		{"4", "4"},
-// 		{"5", "buzz"},
-// 		{"6", "fizz"},
-// 		{"7", "7"},
-// 		{"8", "8"},
-// 		{"9", "fizz"},
-// 		{"10", "buzz"},
-// 		{"11", "11"},
-// 		{"12", "fizz"},
-// 		{"13", "13"},
-// 		{"14", "14"},
-// 		{"15", "buzz"},
-// 		{"18", "fizz"},
-// 		{"20", "buzz"},
-// 		{"25", "buzz"},
-// 	}
-
-// 	}
-//}
-
-// testing example https://golang.org/doc/code.html#Testing
