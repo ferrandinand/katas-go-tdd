@@ -12,12 +12,12 @@ func TestFizzBuzz(t *testing.T) {
 var _ = Describe("FizzBuzz", func() {
 	var (
 		Array []int
-		//transformedArray []string
+		// transformedArray []string
 	)
 
 	BeforeEach(func() {
 		Array = fill(100)
-		//transformedArray = transformFizzOrBuzz(Array)
+		// transformedArray = transformFizzOrBuzz(Array)
 	})
 
 	Context("Create list of 100", func() {
@@ -43,9 +43,10 @@ var _ = Describe("FizzBuzz", func() {
 			Expect(divisibleby3and5(15)).To(Equal(true))
 		})
 	})
-	//Context("Check expected values", func() {
-	//	It("Contains Fizz Buzz FizzBuzz or integer", func() {
-	//		Expect((transformedArray)).Should()
-	//	})
-	//})
+
+	// Context("Check expected values", func() {
+	// 	It("Contains Fizz if it divisible by 3", func() {
+	// 		Expect(transformedArray[2]).To(BeEquivalentTo('Fizz'))
+	// 	})
+	// })
 })

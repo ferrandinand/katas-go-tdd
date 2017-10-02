@@ -27,9 +27,10 @@ func main() {
 func fill(n int) []int {
 	maxnumber := make([]int, n)
 
-	for i := 0; i < n; i++ {
-		maxnumber[i] = i + 1
+	for i := range maxnumber {
+		maxnumber[i] = i
 	}
+	fmt.Println(maxnumber)
 	return maxnumber
 }
 
@@ -59,19 +60,19 @@ func divisibleby3and5(n int) bool {
 
 }
 
-//func transformFizzOrBuzz(arrayofnumbers []int) []string {
-// var transformedArray []string
+// func transformFizzOrBuzz(arrayofnumbers []int) []string {
+// 	var transformedArray []string
 // 	for i, value := range arrayofnumbers {
 // 		fmt.Println(value)
 // 		transformedArray[i] = strconv.Itoa(value)
 
 // 	}
 
-// 	// for i := 0; i < len(arrayofnumbers); i++ {
+// 	for i := 0; i < len(arrayofnumbers); i++ {
 
-// 	// 	transformedArray[i] = strconv.Itoa(arrayofnumbers[i])
+// 		transformedArray[i] = strconv.Itoa(arrayofnumbers[i])
 
-// 	// }
+// 	}
 
 // 	return transformedArray
 // }
