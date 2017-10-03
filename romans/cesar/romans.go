@@ -19,6 +19,8 @@ func Convertarabictoroman(number int) (romanresult string) {
 		arabic int
 		roman  string
 	}{
+		{arabic: 100, roman: "C"},
+		{arabic: 90, roman: "XC"},
 		{arabic: 50, roman: "L"},
 		{arabic: 40, roman: "XL"},
 		{arabic: 10, roman: "X"},
@@ -29,9 +31,9 @@ func Convertarabictoroman(number int) (romanresult string) {
 	}
 
 	for _, arabicromanmap := range romanequivalences {
-		decimalremainder, numberofsymbols := getremainderandquotient(number, arabicromanmap.arabic)
+		decimalremainder, romanequivalencesymbol := getremainderandquotient(number, arabicromanmap.arabic)
 		number = decimalremainder
-		romanresult += strings.Repeat(arabicromanmap.roman, numberofsymbols)
+		romanresult += strings.Repeat(arabicromanmap.roman, romanequivalencesymbol)
 	}
 
 	return
