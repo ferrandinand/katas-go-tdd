@@ -14,46 +14,46 @@ func TestFizzBuzz(t *testing.T) {
 
 var _ = Describe("FizzBuzz", func() {
 	var (
-		Array            []int
+		arrayofnumbers   []int
 		transformedArray []string
 	)
 	BeforeEach(func() {
-		Array = fill(100)
-		transformedArray = transformFizzOrBuzz(Array)
+		arrayofnumbers = fill(100)
+		transformedArray = transformFizzOrBuzz(arrayofnumbers)
 	})
 
 	AfterEach(func() {
-		Array = nil
+		arrayofnumbers = nil
 	})
 
 	Context("Create list of 100", func() {
 		It("Create an array of 100 items", func() {
-			Expect(len(Array)).Should(BeEquivalentTo(100))
+			Expect(len(arrayofnumbers)).Should(BeEquivalentTo(100))
 		})
 	})
 
 	Context("Numbers divisible by 3 show Fizz", func() {
 
 		It("3 must return Fizz", func() {
-			divisible, number := divisibleby3and5(3)
-			Expect(divisibleby3(divisible)).To(Equal(true))
-			Expect(divisibleby3(number)).To(Equal("3"))
+			divisible, number := divisibleby3(3)
+			Expect(divisible).To(Equal(true))
+			Expect(number).To(Equal("fizz"))
 		})
 		It("4 must return Fizz", func() {
-			divisible, number := divisibleby3and5(3)
-			Expect(divisibleby3(divisible)).To(Equal(false))
-			Expect(divisibleby3(number)).To(Equal("4"))
+			divisible, number := divisibleby3(4)
+			Expect(divisible).To(Equal(false))
+			Expect(number).To(Equal("4"))
 		})
 	})
 
 	Context("Numbers divisible by 5 show Buzz", func() {
 		It("5 must return buzz", func() {
-			divisible, number := divisibleby3and5(5)
+			divisible, number := divisibleby5(5)
 			Expect(divisible).To(Equal(true))
-			Expect(number).To(Equal("5"))
+			Expect(number).To(Equal("buzz"))
 		})
 		It("7 must return buzz", func() {
-			divisible, number := divisibleby3and5(5)
+			divisible, number := divisibleby5(7)
 			Expect(divisible).To(Equal(false))
 			Expect(number).To(Equal("7"))
 		})
@@ -72,9 +72,9 @@ var _ = Describe("FizzBuzz", func() {
 		})
 	})
 
-	// Context("Check expected values", func() {
-	// 	It("Contains Fizz if it divisible by 3", func() {
-	// 		Expect(transformedArray[2]).To(BeEquivalentTo('Fizz'))
-	// 	})
-	// })
+	Context("Check expected values", func() {
+		It("Contains Fizz if it divisible by 3", func() {
+			Expect(transformedArray[2]).To(BeEquivalentTo("Fizz"))
+		})
+	})
 })
