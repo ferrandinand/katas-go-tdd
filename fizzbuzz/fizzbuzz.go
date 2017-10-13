@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -46,17 +45,21 @@ func divisibleby3and5(n int) (bool, string) {
 }
 
 func transformFizzOrBuzz(arrayofnumbers []int) []string {
-	var transformedArray []string
+
+	transformedArray := make([]string, 100)
 
 	for i := 0; i < len(arrayofnumbers); i++ {
-		fmt.Println(arrayofnumbers[i])
+		isFizz, valueFizz := divisibleby3(arrayofnumbers[i])
+		isBuzz, valueBuzz := divisibleby5(arrayofnumbers[i])
+
+		if isFizz {
+			transformedArray[i] = valueFizz
+		} else if isBuzz {
+			transformedArray[i] = valueBuzz
+		} else {
+			transformedArray[i] = strconv.Itoa(arrayofnumbers[i])
+		}
 	}
-
-	// 	for i := 0; i < len(arrayofnumbers); i++ {
-
-	// 		transformedArray[i] = strconv.Itoa(arrayofnumbers[i])
-
-	// 	}
 
 	return transformedArray
 }

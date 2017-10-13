@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
@@ -19,7 +20,6 @@ var _ = Describe("FizzBuzz", func() {
 	)
 	BeforeEach(func() {
 		arrayofnumbers = fill(100)
-		transformedArray = transformFizzOrBuzz(arrayofnumbers)
 	})
 
 	AfterEach(func() {
@@ -73,8 +73,12 @@ var _ = Describe("FizzBuzz", func() {
 	})
 
 	Context("Check expected values", func() {
+		arrayofnumbers = fill(100)
+		transformedArray = transformFizzOrBuzz(arrayofnumbers)
+
+		fmt.Println(transformedArray)
 		It("Contains Fizz if it divisible by 3", func() {
-			Expect(transformedArray[2]).To(BeEquivalentTo("Fizz"))
+			Expect(transformedArray[3]).To(BeEquivalentTo("fizz"))
 		})
 	})
 })
