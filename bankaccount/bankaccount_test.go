@@ -2,6 +2,7 @@ package bankaccount
 
 import (
 	"testing"
+	"time"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -36,8 +37,9 @@ var _ = Describe("BankAccount", func() {
 	})
 	Context("Check output", func() {
 		It("Contains deposit data and balance", func() {
-			deposit(1000.0)
-			Expect(outputMovement()).To(Equal("My balance is "))
+			deposit(500.0)
+			currentdate := time.Now().Format("2/01/2006")
+			Expect(outputMovement()).To(Equal("date || credit || balance\n" + currentdate + " || 500.00 || 500.00"))
 		})
 	})
 })

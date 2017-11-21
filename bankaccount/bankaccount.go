@@ -6,7 +6,7 @@ import (
 )
 
 var balanceTotal float64
-var input_movement float64 = 300.0
+var input_movement float64 = 500.00
 
 func deposit(received float64) {
 	balanceTotal += received
@@ -21,13 +21,16 @@ func balance() float64 {
 }
 
 func date() string {
-	return time.Now().Format("d-m-Y")
+	return time.Now().Format("2/01/2006")
+}
+
+func formatAmount(amount float64) string {
+	return strconv.FormatFloat(amount, 'f', 2, 64)
 }
 
 func outputMovement() string {
-	movement := strconv.FormatFloat(input_movement, 'E', -1, 64)
-	balanceStatus := strconv.FormatFloat(balance(), 'E', -1, 64)
-
-	myBalance := date() + movement + balanceStatus
+	movement := formatAmount(input_movement)
+	balanceStatus := formatAmount(balance())
+	myBalance := "date || credit || balance\n" + date() + " || " + movement + " || " + balanceStatus
 	return myBalance
 }
