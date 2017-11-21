@@ -1,21 +1,33 @@
 package bankaccount
 
-func deposit() float32 {
+import (
+	"strconv"
+	"time"
+)
 
-	return 1000.0
+var balanceTotal float64
+var input_movement float64 = 300.0
+
+func deposit(received float64) {
+	balanceTotal += received
 }
 
-func credit() float32 {
-
-	return 1000.0
+func resetBalance() {
+	balanceTotal = 0
 }
 
-func balance() float32 {
-
-	return 1000.0
+func balance() float64 {
+	return balanceTotal
 }
 
-func checkbalance() float32 {
+func date() string {
+	return time.Now().Format("d-m-Y")
+}
 
-	return balance()
+func outputMovement() string {
+	movement := strconv.FormatFloat(input_movement, 'E', -1, 64)
+	balanceStatus := strconv.FormatFloat(balance(), 'E', -1, 64)
+
+	myBalance := date() + movement + balanceStatus
+	return myBalance
 }
