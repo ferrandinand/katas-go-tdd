@@ -6,14 +6,19 @@ import (
 )
 
 var balanceTotal float64
-var input_movement float64 = 500.00
+var input_movement float64 = 500.00 // convert to function
+
+var banksettelment = []struct {
+	date    string
+	credit  float64
+	balance float64
+}{
+	{date: "01/04/2014", credit: 1000.00, balance: 1000.00},
+	{date: "02/04/2014", credit: 500.00, balance: 1500.00},
+}
 
 func deposit(received float64) {
 	balanceTotal += received
-}
-
-func resetBalance() {
-	balanceTotal = 0
 }
 
 func balance() float64 {
@@ -29,8 +34,6 @@ func formatAmount(amount float64) string {
 }
 
 func outputMovement() string {
-	movement := formatAmount(input_movement)
-	balanceStatus := formatAmount(balance())
-	myBalance := "date || credit || balance\n" + date() + " || " + movement + " || " + balanceStatus
+	myBalance := "date || credit || balance\n" + banksettelment[0].date + " || " + strconv.FormatFloat(banksettelment[0].credit, 'f', 2, 64) + " || " + strconv.FormatFloat(banksettelment[0].balance, 'f', 2, 64)
 	return myBalance
 }

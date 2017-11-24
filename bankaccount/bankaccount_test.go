@@ -15,7 +15,7 @@ func TestBankAccount(t *testing.T) {
 
 var _ = Describe("BankAccount", func() {
 	AfterEach(func() {
-		resetBalance()
+		balanceTotal = 0
 	})
 
 	Context("Check credit and balance", func() {
@@ -43,3 +43,12 @@ var _ = Describe("BankAccount", func() {
 		})
 	})
 })
+
+// Example
+
+// The client makes a deposit of 1000.00 on 01/04/2014
+// The client makes a deposit of 500.00 on 02/04/2014
+// Output:
+// date || credit || balance
+// 02/04/2014 || 500.00 || 1500.00
+// 01/04/2014 || 1000.00 || 1000.00
