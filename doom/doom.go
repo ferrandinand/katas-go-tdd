@@ -1,16 +1,25 @@
 package doom
 
 import (
-	"fmt"
 	"math/rand"
 )
 
 var player string
 
-func attack() string {
-	demon := []string{"daemon 1", "daemon 2", "daemon 3"}
+type attackEvent struct {
+	daemonId int
+}
 
-	ran := rand.Intn(2)
-	fmt.Print(rand.Intn(2000))
-	return demon[ran]
+type gameState struct {
+	daemonId   int
+	numAttacks int
+}
+
+func attack() attackEvent {
+	return attackEvent{daemonId: rand.Intn(2000)}
+}
+
+func processEvent(state gameState, event attackEvent) gameState {
+	state.numAttacks = 1
+	return state
 }
