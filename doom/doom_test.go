@@ -22,26 +22,32 @@ var _ = Describe("Doom", func() {
 	})
 	Context("", func() {
 		It("EventAttack generates a new game state", func() {
-			attackEvent := attackEvent{daemonId: 35}
-			gameState := gameState{daemonId: 35, numAttacks: 0}
+			attack := attackEvent{daemonId: 35}
 
-			newGameState := processEvent(gameState, attackEvent)
+			gameState := gameState{daemons: []daemon{daemon{id: 35, numAttacks: 0}}}
 
-			Expect(newGameState.daemonId).To(Equal(35))
-			Expect(newGameState.numAttacks).To(Equal(1))
+			finalGameState := processEvent(gameState, attack)
+
+			Expect(finalGameState.daemons[0].id).To(Equal(35))
+			Expect(finalGameState.daemons[0].numAttacks).To(Equal(1))
 		})
 
-		/*It("EventAttack generates a new game state", func() {
-			attackEvent := attackEvent{daemonId: 35}
-			attackEvent := attackEvent{daemonId: 37}
+		It("EventAttack generates a new game state", func() {
+			firstAttack := attackEvent{daemonId: 35}
+			secondAttack := attackEvent{daemonId: 37}
 
-			gameState := gameState{daemons:[{}]
+			gameState := gameState{daemons: []daemon{daemon{id: 35, numAttacks: 0}, daemon{id: 37, numAttacks: 0}}}
 
-			newGameState := processEvent(gameState, attackEvent)
+			intermediateGameState := processEvent(gameState, firstAttack)
+			finalGameState := processEvent(intermediateGameState, secondAttack)
 
-			Expect(newGameState.daemonId).To(Equal(35))
-			Expect(newGameState.numAttacks).To(Equal(1))
-		})*/
+			Expect(finalGameState.daemons[0].id).To(Equal(35))
+			Expect(finalGameState.daemons[0].numAttacks).To(Equal(1))
+
+			Expect(finalGameState.daemons[1].id).To(Equal(37))
+			Expect(finalGameState.daemons[1].numAttacks).To(Equal(1))
+
+		})
 
 	})
 })
